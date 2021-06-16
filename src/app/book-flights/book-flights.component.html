@@ -1,0 +1,52 @@
+<div>
+ <div style="width: 50%; height: 50%; float:left;">
+    <input type="radio"  [(ngModel)]="tripType" name="tripType" [value]="0" [checked]="options" required> One Way
+    <br/><br/> 
+    <label for="fromJourney">Journey From:</label>
+  <select name="fromJourney" id="fromJourney" required>
+    <option value="HYD">Hyderabad</option>
+    <option value="DEL">Delhi</option>
+    <option value="CHEN">Chennai</option>
+    <option value="BAN">Bangalore</option>
+  </select>
+    <br/><br/>
+    Departure Journey Date: <input type="date" required>
+    <br/><br/>
+    Departure Journey Time: <input type="time" required>
+    <br/><br/>
+    <table>
+        <tr *ngFor="let tab of airLineDetails">
+            <td>{{tab.airlineName}}</td>
+            <td>{{tab.actualPrice}}</td>
+        </tr>
+    </table>
+</div>
+    <div style="width: 50%; height: 50%;  float:right;">
+        <input type="radio"  [(ngModel)]="tripType" name="tripType" [value]="1" [checked]="!options" required> Round Trip
+        <br/><br/>
+    Journey To:
+      <label for="fromJourney">Journey From:</label>
+  <select name="fromJourney" id="fromJourney" required>
+    <option value="HYD">Hyderabad</option>
+    <option value="DEL">Delhi</option>
+    <option value="CHEN">Chennai</option>
+    <option value="BAN">Bangalore</option>
+    </select>
+    <br/><br/>
+    </div>
+    <div *ngIf="tripType == 1">
+    Return Jouney Date:<input type="date" required>
+    <br/><br/>
+    Return Time would be:<input type="text" required>
+    <br/><br/>
+    <table>
+        <tr *ngFor="let tab of airLineDetails">
+            <td>{{tab.airlineName}}</td>
+            <td>{{tab.actualPrice}}</td>
+        </tr>
+    </table>
+    </div>
+</div>
+<div><br/><br/>
+<button (click)="onConfirmBooking()">Confirm Booking</button>
+</div>

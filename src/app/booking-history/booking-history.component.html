@@ -1,0 +1,20 @@
+<div>
+    <b>Ticket Booking History</b>
+</div>
+<div class="tableAlign">
+    <table>
+        <tr class="headerTab">
+            <td>Date</td>
+            <td>Airways</td>
+            <td>Price</td>
+            <td>Seats</td>
+        </tr>
+        <tr *ngFor = "let hist of ticketHistory">
+            <td>{{hist.date}}</td>
+            <td>{{hist.airways}}</td>
+            <td>{{hist.price}}</td>
+            <td>{{hist.seats}}</td>
+            <td><button>View Details</button></td>
+        </tr>
+    </table>
+</div>

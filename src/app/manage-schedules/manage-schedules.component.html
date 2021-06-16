@@ -1,0 +1,27 @@
+<b>List of Available Airlines</b>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Airline Name</th>
+                <th scope="col">Flight Number</th>
+                <th scope="col">Starting City</th>
+                <th scope="col">Destination City</th>
+                <th scope="col">Availble Seats</th>
+                <th scope="col">Ticket Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let airline of availbleFlights | async">
+                <td>{{airline.airLineName}}</td>
+                <td>{{airline.flightNumber}}</td>
+                <td>{{airline.cityFrom}}</td>
+                <td>{{airline.cityTo}}</td>
+                <td>{{airline.rowSeats}}</td>
+                <td>{{airline.ticketCost}}</td>
+                <button type="button" class="btn btn-success" (click)="onManageClick(airline.id)">Manage</button>
+            </tr>
+        </tbody>
+    </table>
+</div>

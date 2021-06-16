@@ -1,0 +1,14 @@
+<div>
+<b> Managing your Flights</b>
+<br/>
+    <table>
+    <tr *ngFor="let manage of manageHist">
+        <td>{{manage.airLine}}</td>
+        <td>{{manage.price}}</td>
+        <td>{{manage.date}}</td>
+        <td><button>View</button></td>
+        <td><button>Download</button></td>
+        <td><button>Cancel</button></td>
+    </tr>
+    </table>
+</div>

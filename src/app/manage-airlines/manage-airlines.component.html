@@ -1,0 +1,63 @@
+<div class="alert alert-success alert-dismissible fade show" *ngIf="isAddSuccess">
+    Successfully added the Airline.
+</div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="isAddError">
+    Failed to add the Airline.
+</div>
+<nav class="navbar navbar-expand navbar-dark">
+    <div [hidden]="submitted" style="width: 400px;">
+
+        <form (ngSubmit)="onSubmit()">
+            <fieldset>
+                <legend><b>Add Airline</b></legend>
+                <div class="form-group">
+                    <label for="name">Airline Name</label>
+                    <input type="text" class="form-control" id="airLineName" required [(ngModel)]="flight.airLineName"
+                        name="airlineName">
+                </div>
+                <div class="form-group">
+                    <label for="name">Flight Number</label>
+                    <input type="text" class="form-control" id="flightNumber" required [(ngModel)]="flight.flightNumber"
+                        name="flightNumber">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Contact Number</label>
+                    <input type="text" class="form-control" id="contactNum" required [(ngModel)]="flight.contactNum"
+                        name="contactNum">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Starting City:</label>
+                    <!-- <input type="text" class="form-control" id="cityFrom" required [(ngModel)]="flight.cityFrom"
+                    name="cityFrom"> -->
+                    <select [(ngModel)]="flight.cityFrom" name="cityFrom">
+                        <option *ngFor="let air of cities" [ngValue]="air">{{air}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Destination City:</label>
+                    <select [(ngModel)]="flight.cityTo" name="cityTo">
+                        <option *ngFor="let air of cities" [ngValue]="air">{{air}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">No.of rows for seats:</label>
+                    <input type="number" class="form-control" id="rowSeats" required [(ngModel)]="flight.rowSeats"
+                        name="rowSeats">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Ticket Cost</label>
+                    <input type="text" class="form-control" id="ticketCost" required [(ngModel)]="flight.ticketCost"
+                        name="ticketCost">
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </fieldset>
+        </form>
+
+    </div>
+</nav>

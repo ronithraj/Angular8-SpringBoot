@@ -1,0 +1,67 @@
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="isAvailableTimeWrong">
+    StartTime should always be less than EndTime!
+</div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="isSeatsAvailableWrong">
+    Business & Non-Business seats count should be less than or equal to Total seats.
+</div>
+<div class="leftCont">
+    <nav class="navbar navbar-expand navbar-dark">
+        <div [hidden]="submitted" style="width: 400px;">
+
+            <form (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <legend><b>Schedule Airline</b></legend>
+                    <div class="form-group">
+                        <label for="name">Airline Name</label>
+                        <input type="text" class="form-control" id="airLineName" disabled
+                            [(ngModel)]="flight.airLineName" name="airlineName">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Flight Number</label>
+                        <input type="text" class="form-control" id="flightNumber" disabled
+                            [(ngModel)]="flight.flightNumber" name="flightNumber">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">No.of rows for seats:</label>
+                        <input type="text" class="form-control" id="rowSeats" disabled [(ngModel)]="flight.rowSeats"
+                            name="rowSeats">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Ticket Cost</label>
+                        <input type="text" class="form-control" id="ticketCost" disabled [(ngModel)]="flight.ticketCost"
+                            name="ticketCost">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </nav>
+</div>
+<div class="rightCont">
+    <br /><br />
+    <nav class="navbar navbar-expand navbar-dark">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Available From(Start Time):</label>
+                <input type="time" class="form-control" id="startTime" [(ngModel)]="flight.startTime" name="startTime">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="name">Available Till(End Time):</label>
+                <input type="time" class="form-control" id="endTime" [(ngModel)]="flight.endTime" name="endTime">
+            </div>
+            <div class="form-group">
+                <label for="name">No.of Business seats:</label>
+                <input type="number" class="form-control" id="businessSeats" [(ngModel)]="flight.businessSeats"
+                    name="businessSeats">
+            </div>
+            <div class="form-group">
+                <label for="name">No.of Non-Business seats:</label>
+                <input type="number" class="form-control" id="nonBusinessSeats" [(ngModel)]="flight.nonBusinessSeats"
+                    name="nonBusinessSeats">
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </nav>
+</div>
