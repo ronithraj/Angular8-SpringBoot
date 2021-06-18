@@ -1,5 +1,4 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
 import { HomeComponent } from './home';
 import { AdminComponent } from './admin';
 import { LoginComponent } from './login';
@@ -15,6 +14,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { RegisterComponent } from './register/register.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ScheduleFlightComponent } from './schedule-flight/schedule-flight.component';
+import { ConfirmBookingComponent } from './confirm-booking/confirm-booking.component';
 
 const routes: Routes = [
     {
@@ -72,6 +72,10 @@ const routes: Routes = [
     {
         path: 'scheduleFlight/:id',
         component: ScheduleFlightComponent
+    },
+    {
+        path: 'confirmBooking',
+        component: ConfirmBookingComponent
     },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

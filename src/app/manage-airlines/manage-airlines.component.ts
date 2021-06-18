@@ -23,14 +23,17 @@ export class ManageAirlinesComponent implements OnInit {
   onSubmit() {
     this.flight.businessSeats = 0;
     this.flight.nonBusinessSeats = 0;
+    this.flight.isAvailable = true;
     this.flightBookingService.createFlight(this.flight).subscribe(data => {
       console.log(data)
       this.flight = new Flight();
       this.isAddSuccess = true;
+      this.isAddError = false;
       this.gotoAfterSuccess();
     },
       error => {
         console.log(error);
+        this.isAddSuccess = false;
         this.isAddError = true;
       });
   }

@@ -1,39 +1,40 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark" *ngIf="currentUser">
-    <div class="nav nav-pills">
-  <a routerLink="" style="font-size: 32px;font-weight: bold;font-family: 'Times New Roman', Times, serif;color:black;">Flight Booking</a>
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <!-- <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a> -->
-        <li class="nav-item">
-        <a class="nav-link" routerLink="book" routerLinkActive="active" *ngIf="!isAdmin">Book Flights</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="manageFlights" routerLinkActive="active" *ngIf="!isAdmin">Manage Flights</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="history" routerLinkActive="active" *ngIf="!isAdmin">Booking History</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="manageAirlines" routerLinkActive="active" *ngIf="isAdmin">Manage Airlines</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="manageDiscounts" routerLinkActive="active" *ngIf="isAdmin">Manage Discounts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="manageSchedules" routerLinkActive="active" *ngIf="isAdmin">Manage Schedules</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="reports" routerLinkActive="active" *ngIf="isAdmin">Reports</a>
-      </li>
-        <a style="margin-left:500px;" (click)="logout()" *ngIf="isAdmin">Logout</a>
-        <a style="margin-left:650px;" (click)="logout()" *ngIf="!isAdmin">Logout</a>
-    </div>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="nav nav-pills">
+    <a routerLink=""
+      style="font-size: 32px;font-weight: bold;font-family: 'Times New Roman', Times, serif;color:white;">Flight
+      Booking</a>
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <!-- <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a> -->
+    <li class="nav-item">
+      <a class="nav-link" routerLink="book" routerLinkActive="active" *ngIf="!isAdmin">Book Flights</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="manageFlights" routerLinkActive="active" *ngIf="!isAdmin">Manage Bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="history" routerLinkActive="active" *ngIf="!isAdmin">Booking History</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="manageAirlines" routerLinkActive="active" *ngIf="isAdmin">Manage Airlines</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="manageDiscounts" routerLinkActive="active" *ngIf="isAdmin">Manage Discounts</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="manageSchedules" routerLinkActive="active" *ngIf="isAdmin">Manage Schedules</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="reports" routerLinkActive="active" *ngIf="isAdmin">Reports</a>
+    </li>
+    <button class="btn btn-danger" style="margin-left:500px;" (click)="logout()" *ngIf="isAdmin">Logout</button>
+    <button class="btn btn-danger" style="margin-left:650px;" (click)="logout()" *ngIf="!isAdmin">Logout</button>
+  </div>
 </nav>
 
 <!-- main app container -->
 <div class="container">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 
 <!-- footer -->
-

@@ -5,20 +5,18 @@ td {
   padding: 5px;
   margin-left: 20%;
 }
+
 button {
   border-radius: 10px;
   background-color: rgb(192, 153, 68);
 }
-b{
-  font-weight: bold;
-  font-family: 'Lucida Sans',
-  'Lucida Sans Regular',
-  'Lucida Grande',
-  'Lucida Sans Unicode',
-  Geneva,
-  Verdana,
-  sans-serif;
-  color :maroon;
-  font-size:24px;
-  margin-left: 25%;
+
+b {
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
+  font-style: oblique;
+  margin-left: 30%;
+  font-size: 30px;
+  font-style: italic;
 }

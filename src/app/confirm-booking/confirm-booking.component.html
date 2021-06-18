@@ -1,0 +1,85 @@
+<div class="alert alert-success alert-dismissible fade show" *ngIf="isSuccessTicketOne || isSuccessTicketTwo">
+    {{message}} is created successfully.
+</div>
+<div class="leftCont">
+    <nav class="navbar navbar-expand navbar-dark">
+        <div [hidden]="submitted" style="width: 400px;">
+            <form>
+                <fieldset>
+                    <legend><b>Confirm Your Booking</b></legend>
+                    <div class="form-group">
+                        <label for="name">Airline Name</label>
+                        <input type="text" class="form-control" id="airLineName" disabled
+                            [(ngModel)]="flightOne.airLineName" name="airlineName">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Flight Number</label>
+                        <input type="text" class="form-control" id="flightNumber" disabled
+                            [(ngModel)]="flightOne.flightNumber" name="flightNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">From</label>
+                        <input type="text" class="form-control" id="from" disabled [(ngModel)]="flightOne.cityFrom"
+                            name="from">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">To</label>
+                        <input type="text" class="form-control" id="to" disabled [(ngModel)]="flightOne.cityTo"
+                            name="to">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Ticket Cost</label>
+                        <input type="text" class="form-control" id="ticketCost" disabled
+                            [(ngModel)]="flightOne.ticketCost" name="ticketCost">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Select No.of seats</label>
+                        <input type="number" class="form-control" id="stCnt" [(ngModel)]="seatCountOne" name="stCnt">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </nav>
+</div>
+<br />
+<br />
+<div class="rightCont" *ngIf="showTwoWay">
+    <nav class="navbar navbar-expand navbar-dark">
+        <div [hidden]="submitted" style="width: 400px;">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="name">Airline Name</label>
+                        <input type="text" class="form-control" id="airLineName" disabled
+                            [(ngModel)]="flightTwo.airLineName" name="airlineName">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Flight Number</label>
+                        <input type="text" class="form-control" id="flightNumber" disabled
+                            [(ngModel)]="flightTwo.flightNumber" name="flightNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">From</label>
+                        <input type="text" class="form-control" id="from" disabled [(ngModel)]="flightTwo.cityFrom"
+                            name="from">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">To</label>
+                        <input type="text" class="form-control" id="to" disabled [(ngModel)]="flightTwo.cityTo"
+                            name="to">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Ticket Cost</label>
+                        <input type="text" class="form-control" id="ticketCost" disabled
+                            [(ngModel)]="flightTwo.ticketCost" name="ticketCost">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Select No.of seats</label>
+                        <input type="number" class="form-control" id="stCnt" [(ngModel)]="seatCountTwo" name="stCnt">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </nav>
+</div>
+<button class="btn btn-success" (click)="onCheckOut()">Checkout</button>

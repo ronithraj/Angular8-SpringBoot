@@ -23,7 +23,8 @@ import { ManageDiscountsComponent } from './manage-discounts/manage-discounts.co
 import { RegisterComponent } from './register/register.component';
 import { CheckoutComponent } from './checkout/checkout.component';;
 import { ScheduleFlightComponent } from './schedule-flight/schedule-flight.component'
-
+;
+import { ConfirmBookingComponent } from './confirm-booking/confirm-booking.component'
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { ScheduleFlightComponent } from './schedule-flight/schedule-flight.compo
 ,
         RegisterComponent ,
         CheckoutComponent ,
-        ScheduleFlightComponent  ],
+        ScheduleFlightComponent ,
+        ConfirmBookingComponent ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

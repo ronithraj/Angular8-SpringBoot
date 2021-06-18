@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FlightBookingService } from '@app/flight-booking.service';
+import { Ticket } from '@app/_models/ticket';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booking-history',
@@ -6,36 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booking-history.component.scss']
 })
 export class BookingHistoryComponent implements OnInit {
-
-  constructor() { }
+  availableTickets: Observable<Ticket[]>;
+  constructor(private router: Router,
+    private flightBookingService: FlightBookingService) { }
 
   ngOnInit() {
+    this.availableTickets = this.flightBookingService.getAllTickets();
   }
-  ticketHistory = [
-    {
-    date: "24/6/2021",
-    airways: "Vistara",
-    price: "Rs. 3,405",
-    seats: 3
-    },
-    {
-    date: "18/6/2021",
-    airways: "SpiceJet",
-    price: "Rs. 2,125",
-    seats: 3
-    },
-    {
-    date: "14/6/2021",
-    airways: "Indigo",
-    price: "Rs. 1,005",
-    seats: 1
-    },
-    {
-    date: "12/6/2021",
-    airways: "SpiceJet",
-    price: "Rs. 1,125",
-    seats: 2
-    },
-    
-  ]
+
 }

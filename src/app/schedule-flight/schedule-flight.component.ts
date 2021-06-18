@@ -25,11 +25,14 @@ export class ScheduleFlightComponent implements OnInit {
     this.flightBookingService.getFlightById(this.id)
       .subscribe(data => {
         this.flight = data;
+        console.log('d--', this.flight);
       },
         error => {
           console.log(error);
         });
+    console.log('dgdz', this.flight)
   }
+
 
   onSubmit() {
     if ((this.flight.startTime > this.flight.endTime) || (this.flight.startTime === this.flight.endTime)) {

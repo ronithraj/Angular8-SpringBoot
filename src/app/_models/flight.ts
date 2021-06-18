@@ -1,4 +1,5 @@
 export class Flight {
+    id: number;
     airLineName: string;
     flightNumber: string;
     contactNum: number;
@@ -10,4 +11,8 @@ export class Flight {
     endTime: Date;
     businessSeats: number;
     nonBusinessSeats: number;
+    isAvailable: boolean;
+    travelHours: Date;
+    seatCount: number;
+    ticketDate: string;
 }

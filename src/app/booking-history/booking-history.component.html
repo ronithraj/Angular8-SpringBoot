@@ -1,20 +1,27 @@
 <div>
     <b>Ticket Booking History</b>
 </div>
-<div class="tableAlign">
-    <table>
-        <tr class="headerTab">
-            <td>Date</td>
-            <td>Airways</td>
-            <td>Price</td>
-            <td>Seats</td>
-        </tr>
-        <tr *ngFor = "let hist of ticketHistory">
-            <td>{{hist.date}}</td>
-            <td>{{hist.airways}}</td>
-            <td>{{hist.price}}</td>
-            <td>{{hist.seats}}</td>
-            <td><button>View Details</button></td>
-        </tr>
+<br />
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Airline</th>
+                <th scope="col">Price</th>
+                <th scope="col">Seats</th>
+                <th scope="col" style="text-align:center;">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let history of availableTickets | async">
+                <td>{{history.ticketDate}}</td>
+                <td>{{history.airLineName}}</td>
+                <td>{{history.price}}</td>
+                <td>{{history.seatCount}}</td>
+                <td> <button type="button" class="btn btn-success"
+                        (click)="onDetailsClick(history.id)">Details</button>&nbsp;</td>
+            </tr>
+        </tbody>
     </table>
 </div>

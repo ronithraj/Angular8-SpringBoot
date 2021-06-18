@@ -1,14 +1,11 @@
 package com.app.flightBooking.models;
 
-import java.sql.Time;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -48,11 +45,27 @@ public class Flight {
 	@Column(name = "non_business_seats")
 	private int nonBusinessSeats;
 
-	/*
-	 * @Transient
-	 * 
-	 * @Column(name = "available_days") private String availableDays;
-	 */
+	@Column(name = "is_available")
+	private boolean isAvailable;
+
+	@Column(name = "travel_hours")
+	private String travelHours;
+
+	public boolean getIsAvailable() {
+		return isAvailable;
+	}
+
+	public void setIsAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
+	public String getTravelHours() {
+		return travelHours;
+	}
+
+	public void setTravelHours(String travelHours) {
+		this.travelHours = travelHours;
+	}
 
 	public Long getId() {
 		return id;

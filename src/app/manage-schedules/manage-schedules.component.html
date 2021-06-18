@@ -1,3 +1,8 @@
+<div class="alert alert-success alert-dismissible" *ngIf="isBlocked">
+    <!-- <a routerLink="manageSchedules" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
+    {{message}} Flight successfully!
+</div>
+
 <b>List of Available Airlines</b>
 <div>
     <table class="table">
@@ -9,7 +14,7 @@
                 <th scope="col">Destination City</th>
                 <th scope="col">Availble Seats</th>
                 <th scope="col">Ticket Price</th>
-                <th scope="col">Action</th>
+                <th scope="col" style="text-align:center;">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +25,9 @@
                 <td>{{airline.cityTo}}</td>
                 <td>{{airline.rowSeats}}</td>
                 <td>{{airline.ticketCost}}</td>
-                <button type="button" class="btn btn-success" (click)="onManageClick(airline.id)">Manage</button>
+                <button type="button" class="btn btn-success" (click)="onManageClick(airline.id)">Manage</button>&nbsp;
+                <button type="button" class="btn btn-warning" (click)="onBlockClick(airline.id)">Block</button>&nbsp;
+                <button type="button" class="btn btn-info" (click)="onUnblockClick(airline.id)">UnBlock</button>&nbsp;
             </tr>
         </tbody>
     </table>
