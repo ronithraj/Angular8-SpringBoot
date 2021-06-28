@@ -7,17 +7,21 @@ import { User, Role } from './_models';
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: User;
+    loggedInUser: User;
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
-
-    get isAdmin() {
-        return this.currentUser && this.currentUser.role === Role.Admin;
+    ngOnInit() {
+        this.loggedInUser = this.authenticationService.currentUserValue;
     }
+    get isAdmin() {
+        return this.currentUser && this.currentUser.roles === Role.Admin;
+    }
+
 
     logout() {
         this.authenticationService.logout();

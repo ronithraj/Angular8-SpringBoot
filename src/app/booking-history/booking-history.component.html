@@ -20,8 +20,44 @@
                 <td>{{history.price}}</td>
                 <td>{{history.seatCount}}</td>
                 <td> <button type="button" class="btn btn-success"
-                        (click)="onDetailsClick(history.id)">Details</button>&nbsp;</td>
+                        (click)="openModal('ticket-details-modal',history)">Details</button>&nbsp;</td>
             </tr>
         </tbody>
     </table>
 </div>
+<!-- Open Dialog -->
+<jw-modal id="ticket-details-modal">
+    <h2 style="height:50px;text-align: center;">Ticket Details</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">PNR Number</th>
+                <th scope="col">Date</th>
+                <th scope="col">Airline</th>
+                <th scope="col">Flight #</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Price</th>
+                <th scope="col">Seats</th>
+                <th scope="col">Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ticketDetails.pnrNumber}}</td>
+                <td>{{ticketDetails.ticketDate}}</td>
+                <td>{{ticketDetails.airLineName}}</td>
+                <td>{{ticketDetails.flightNumber}}</td>
+                <td>{{ticketDetails.fromCity}}</td>
+                <td>{{ticketDetails.toCity}}</td>
+                <td>{{ticketDetails.price}}</td>
+                <td>{{ticketDetails.seatCount}}</td>
+                <td>{{ticketDetails.price*ticketDetails.seatCount}}
+            </tr>
+        </tbody>
+    </table>
+    <h2 style="text-align: center;">Have a Safe journey!</h2>
+    <br />
+    <button style="margin-left: 45%;" type="button" class="btn btn-success"
+        (click)="closeModal('ticket-details-modal');">Close</button>
+</jw-modal>

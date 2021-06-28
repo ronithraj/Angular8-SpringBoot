@@ -1,5 +1,6 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, Inject } from '@angular/core';
 import { first } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
 
 import { User } from '@app/_models';
 import { UserService, AuthenticationService } from '@app/_services';
@@ -12,7 +13,8 @@ export class HomeComponent {
 
     constructor(
         private userService: UserService,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        @Inject(DOCUMENT) private _document: Document
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -23,5 +25,9 @@ export class HomeComponent {
             this.loading = false;
             this.userFromApi = user;
         });
+    }
+
+    refresh(): void {
+        this._document.defaultView.location.reload();
     }
 }

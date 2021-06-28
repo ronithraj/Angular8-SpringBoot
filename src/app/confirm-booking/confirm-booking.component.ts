@@ -5,7 +5,8 @@ import { Ticket } from '@app/_models/ticket';
 import { FlightBookingService } from '@app/flight-booking.service';
 import { Observable } from 'rxjs';
 import { SharedService } from '@app/_services/SharedService';
-
+import { User } from '../_models/user';
+import { AuthenticationService } from '@app/_services';
 
 @Component({
   selector: 'app-confirm-booking',
@@ -31,10 +32,13 @@ export class ConfirmBookingComponent implements OnInit {
   message: string;
   isSuccessTicketTwo: boolean = false;
   showTwoWay: boolean = false;
+  loggedInUser: User;
+  userId: any;
 
   constructor(private flightBookingService: FlightBookingService,
     private router: Router, private activeRoute: ActivatedRoute,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
 
@@ -44,7 +48,7 @@ export class ConfirmBookingComponent implements OnInit {
     this.twoWayId = this.sharedService.id2;
     this.departureDate = this.sharedService.departureDate;
     this.returnDate = this.sharedService.returnDate;
-
+    this.loggedInUser = this.authenticationService.currentUserValue;
     this.flightBookingService.getFlightById(this.oneWayId)
       .subscribe(data => {
         this.flightOne = data;
@@ -67,10 +71,18 @@ export class ConfirmBookingComponent implements OnInit {
     console.log(this.twoWayId, this.showTwoWay);
   }
   onCheckOut() {
-    this.flightToTicketAssignment();
-  }
-  flightToTicketAssignment() {
+    this.flightBookingService.getUserDetailsByUserName(this.loggedInUser.userName)
+      .subscribe(user => {
+        this.userId = user;
+        this.flightToTicketAssignment(this.userId.id);
+      },
+        error => {
+          console.log(error);
+        });
 
+  }
+  flightToTicketAssignment(id: number) {
+    this.ticketOne.userId = id;
     this.ticketOne.airLineName = this.flightOne.airLineName;
     this.ticketOne.flightNumber = this.flightOne.flightNumber;
     this.ticketOne.fromCity = this.flightOne.cityFrom;
@@ -87,6 +99,7 @@ export class ConfirmBookingComponent implements OnInit {
         console.log(error);
       });
     if (this.twoWayId == 0) { } else {
+      this.ticketTwo.userId = id;
       this.ticketTwo.airLineName = this.flightTwo.airLineName;
       this.ticketTwo.flightNumber = this.flightTwo.flightNumber;
       this.ticketTwo.fromCity = this.flightTwo.cityFrom;

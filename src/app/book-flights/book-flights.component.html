@@ -16,8 +16,8 @@
                         </select>
                     </div>
                     <div class=" form-group">
-                        Departure Journey Date: <input type="date" [(ngModel)]="departureDate" name="departureDate"
-                            required>
+                        Departure Journey Date: <input type="date" class="form-control" [min]="today"
+                            [(ngModel)]="departureDate" name="departureDate" style="width:250px;" required>
                         <br /><br />
                         Departure Journey Time: <input type="time" [(ngModel)]="flightOne.startTime"
                             name="departureTime" required>
@@ -44,7 +44,8 @@
                 </div>
                 <div *ngIf="tripType == 1">
                     <div class=" form-group">
-                        Return Journey Date: <input type="date" [(ngModel)]="returnDate" name="returnDate" required>
+                        Return Journey Date: <input type="date" [(ngModel)]="returnDate" class="form-control"
+                            [min]="today" name="returnDate" required>
                         <br /><br />
                         Return Journey Time: <input type="time" [(ngModel)]="flightTwo.startTime" name="returnTime"
                             required>

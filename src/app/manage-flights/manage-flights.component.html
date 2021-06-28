@@ -1,5 +1,35 @@
 <div>
-    <b> Managing your Flights</b>
+    <b> Managing your Bookings</b>
     <br />
-    Todo
+</div>
+<br />
+<div class="alert alert-success alert-dismissible fade show" *ngIf="isCancelSuccess">
+    {{message}}
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Airline</th>
+                <th scope="col">Price</th>
+                <th scope="col">Seats</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let history of availableTickets | async">
+                <td>{{history.ticketDate}}</td>
+                <td>{{history.airLineName}}</td>
+                <td>{{history.price}}</td>
+                <td>{{history.seatCount}}</td>
+                <td> <button type="button" class="btn btn-success" (click)="onDownloadClick()">Download</button>&nbsp;
+                    <button type="button" class="btn btn-warning" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                        [popoverMessage]="popoverMessage" placement=right (confirm)="onCancelClick(history.pnrNumber)"
+                        (cancel)="cancelClicked = true">Cancel</button>&nbsp;
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -1,1 +1,32 @@
-<p>register works!</p>
+<b>Registration Form</b>
+<div class="alert alert-success alert-dismissible fade show" *ngIf="isSuccess">
+    {{message}}
+</div>
+<div>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div [hidden]="submitted" style="width: 400px;">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="name">UserName</label>
+                        <input type="text" class="form-control" id="username" [(ngModel)]="newUser.username"
+                            name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">EmailId</label>
+                        <input type="text" class="form-control" id="emailId" [(ngModel)]="newUser.emailId"
+                            name="emailId">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Password</label>
+                        <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password"
+                            name="password">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-success" (click)="onRegister()">Register</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </nav>
+</div>

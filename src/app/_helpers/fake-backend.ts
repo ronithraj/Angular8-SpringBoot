@@ -6,8 +6,8 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User, Role } from '@app/_models';
 
 const users: User[] = [
-    { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
-    { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
+    // { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', roles: Role.Admin },
+    // { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', roles: Role.User }
 ];
 
 @Injectable()
@@ -41,14 +41,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function authenticate() {
             const { username, password } = body;
-            const user = users.find(x => x.username === username && x.password === password);
+            const user = users.find(x => x.userName === username && x.password === password);
             if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,
-                username: user.username,
+                username: user.userName,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                role: user.role,
+                role: user.roles,
                 token: `fake-jwt-token.${user.id}`
             });
         }
@@ -88,7 +88,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function isAdmin() {
-            return isLoggedIn() && currentUser().role === Role.Admin;
+            return isLoggedIn() && currentUser().roles === Role.Admin;
         }
 
         function currentUser() {

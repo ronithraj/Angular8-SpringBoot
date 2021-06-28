@@ -18,6 +18,7 @@ export class ManageAirlinesComponent implements OnInit {
   isAddSuccess: boolean = false;
   isAddError: boolean = false;
   cities = ["Hyderabad", "Chennai", "Delhi", "Bengaluru", "Kolkata", "Cochin", "Ahmedabad"];
+  allFlights = ["IndiGo", "Air India", "SpiceJet", "GoAir", "AirAsia India", "Vistara", "Alliance Air", "TruJet"];
   flight: Flight = new Flight();
 
   onSubmit() {

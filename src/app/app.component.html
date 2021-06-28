@@ -27,8 +27,12 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="reports" routerLinkActive="active" *ngIf="isAdmin">Reports</a>
     </li>
+
     <button class="btn btn-danger" style="margin-left:500px;" (click)="logout()" *ngIf="isAdmin">Logout</button>
     <button class="btn btn-danger" style="margin-left:650px;" (click)="logout()" *ngIf="!isAdmin">Logout</button>
+    <li class="user-name" style="color:rgb(217, 255, 0);margin-top: 10px;padding-left:28px;">
+      LoggedIn User - {{loggedInUser.userName}}
+    </li>
   </div>
 </nav>
 

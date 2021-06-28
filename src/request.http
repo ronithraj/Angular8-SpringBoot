@@ -1,0 +1,3 @@
+
+GET 
+localhost:7090/flight-booking-application/api/get-all-flights

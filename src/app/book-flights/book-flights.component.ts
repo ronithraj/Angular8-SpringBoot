@@ -4,6 +4,8 @@ import { FlightBookingService } from '@app/flight-booking.service';
 import { Flight } from '@app/_models/flight';
 import { Observable } from 'rxjs';
 import { SharedService } from '@app/_services/SharedService';
+import { AuthenticationService } from '../_services/authentication.service'
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-book-flights',
@@ -26,13 +28,33 @@ export class BookFlightsComponent implements OnInit {
   listIds: any;
   twoSelect: any;
   oneSelect: any;
+  currentUser: User;
+  // public personalForm: FormGroup;
+  public today;
+
   constructor(private router: Router,
     private flightBookingService: FlightBookingService,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private authenticationService: AuthenticationService) {
+    const currentDate: Date = new Date();
+    let dd: any = currentDate.getDate();
+    let mm: any = currentDate.getMonth() + 1;
+    let yyyy: any = currentDate.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+
+    this.today = yyyy + '-' + mm + '-' + dd;
   }
 
   ngOnInit() {
     this.cities = ["Hyderabad", "Chennai", "Delhi", "Bengaluru", "Kolkata", "Cochin", "Ahmedabad"];
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
 

@@ -11,9 +11,11 @@
             <fieldset>
                 <legend><b>Add Airline</b></legend>
                 <div class="form-group">
-                    <label for="name">Airline Name</label>
-                    <input type="text" class="form-control" id="airLineName" required [(ngModel)]="flight.airLineName"
-                        name="airlineName">
+                    <label for="name">Airline Name:</label>
+                    <select [(ngModel)]="flight.airLineName" name="airLineName">
+                        <option *ngFor="let air of allFlights" [ngValue]="air">{{air}}</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label for="name">Flight Number</label>
@@ -32,7 +34,7 @@
                     <!-- <input type="text" class="form-control" id="cityFrom" required [(ngModel)]="flight.cityFrom"
                     name="cityFrom"> -->
                     <select [(ngModel)]="flight.cityFrom" name="cityFrom">
-                        <option *ngFor="let air of cities" [ngValue]="air">{{air}}</option>
+                        <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
                     </select>
                 </div>
 

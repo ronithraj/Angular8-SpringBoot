@@ -7,4 +7,6 @@ export class Ticket {
     fromCity: string;
     toCity: string;
     ticketDate: string;
+    pnrNumber: string;
+    userId: number;
 }
